@@ -1,0 +1,23 @@
+{
+    "name": "krok/yii2-cp",
+    "description": "Yii2 CP panel",
+    "type": "yii2-extension",
+    "keywords": ["yii2", "extension", "cp", "panel"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "krok",
+            "email": "creator.git@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "krok/yii2-cp": "*",
+        "krok/yii2-language": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "krok\\cp\\": ""
+        }
+    }
+}
