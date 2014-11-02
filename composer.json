@@ -12,11 +12,16 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "krok/yii2-language": "dev-master"
+        "krok/yii2-language": "*"
     },
     "autoload": {
         "psr-4": {
             "krok\\cp\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1"
         }
     }
 }
