@@ -16,7 +16,6 @@ class Cp extends \yii\base\Module
         parent::init();
 
         // custom initialization code goes here
-        $this->registerModules();
         $this->registerTranslations();
     }
 
@@ -26,15 +25,6 @@ class Cp extends \yii\base\Module
             'class' => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
             'basePath' => '@krok/cp/messages',
-        ];
-    }
-
-    public function registerModules()
-    {
-        $this->modules = [
-            'language' => [
-                'class' => 'krok\language\Manage',
-            ],
         ];
     }
 }
