@@ -23,17 +23,32 @@ to the require section of your `composer.json` file.
 Configure
 -----------------
 
-Add to config file (config/web.php or common\config\main.php)
+Add to config file (config/web.php or common/config/main.php)
 
 ```
-'modules' => [
+    'bootstrap' => [
+        'cp',
+    ],
+```
+
+```
+    'modules' => [
         'cp' => [
             'class' => 'krok\cp\Cp',
             'modules' => [
-                'language' => [
-                    'class' => 'krok\language\Manage',
-                ],
             ],
         ],
-],
+    ],
+```
+
+Add to config file (config/params.php or common/config/params.php)
+
+```
+    'nav' => [
+        [
+            'label' => ['category' => 'cp', 'context' => 'Administration'],
+            'items' => [
+            ],
+        ],
+    ],
 ```

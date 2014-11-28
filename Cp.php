@@ -2,9 +2,9 @@
 
 namespace krok\cp;
 
-use yii;
+use Yii;
 
-class Cp extends \yii\base\Module
+class Cp extends \yii\base\Module implements \yii\base\BootstrapInterface
 {
     /**
      * @var string
@@ -19,9 +19,23 @@ class Cp extends \yii\base\Module
         $this->registerTranslations();
     }
 
+    /**
+     * @param \yii\base\Application $app
+     */
+    public function bootstrap($app)
+    {
+        $app->getUrlManager()->addRules(
+            [
+                $this->id => $this->id,
+                '<language:\w+\-\w+>/' . $this->id => $this->id,
+            ],
+            false
+        );
+    }
+
     public function registerTranslations()
     {
-        yii::$app->i18n->translations[$this->id] = [
+        Yii::$app->i18n->translations[$this->id] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
             'basePath' => '@krok/cp/messages',

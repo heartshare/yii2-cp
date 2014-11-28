@@ -1,11 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use krok\language\widgets\LanguageWidget;
+use krok\cp\widgets\NavWidget;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -29,8 +29,11 @@ AppAsset::register($this);
     <?php
     NavBar::begin(
         [
+            'brandLabel' => Yii::$app->id,
+            'brandOptions' => ['target' => '_blank'],
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
+                'style' => 'z-index: 1051',
             ],
         ]
     );
@@ -39,17 +42,9 @@ AppAsset::register($this);
             'options' => ['class' => 'navbar-nav navbar-right'],
         ]
     );
-    echo Nav::widget(
+    echo NavWidget::widget(
         [
             'options' => ['class' => 'navbar-nav navbar-left'],
-            'items' => [
-                [
-                    'label' => yii::t('cp', 'Administration'),
-                    'items' => [
-                        ['label' => yii::t('language', 'Language'), 'url' => ['/cp/language']],
-                    ],
-                ]
-            ],
         ]
     );
     NavBar::end();
@@ -58,6 +53,10 @@ AppAsset::register($this);
         <?=
         Breadcrumbs::widget(
             [
+                'homeLink' => [
+                    'label' => Yii::t('cp', 'Administration'),
+                    'url' => ['/cp'],
+                ],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]
         ) ?>
@@ -67,16 +66,16 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; NSign <?= date('Y') ?></p>
+        <p class="pull-left">&copy; <?= Yii::$app->id ?> <?= date('Y') ?></p>
 
         <p class="pull-right">
             <?=
             Yii::t(
                 'yii',
-                'Framework {version_core} CP {version_cmf}',
+                'Framework {version_core} CP {version_cp}',
                 [
                     'version_core' => Yii::getVersion(),
-                    'version_cmf' => '1.0',
+                    'version_cp' => '1.0',
                 ]
             ) ?>
         </p>
